@@ -6,18 +6,18 @@ using System.Text;
 namespace TDDMoney {
   class Dollar {
     public Dollar(int amount) {
-      Amount = amount;
+      m_amount = amount;
     }
 
     public Dollar Times(int multiplier) {
-      return new Dollar(Amount * multiplier);
+      return new Dollar(m_amount * multiplier);
     }
 
     public override bool Equals(object o) {
-      return Amount == ((Dollar)o).Amount;
+      return m_amount == ((Dollar)o).m_amount;
     }
 
-    public int Amount { get; set; }
+    private int m_amount;
 
     static void Main() {
     }

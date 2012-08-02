@@ -10,11 +10,9 @@ namespace TDDMoney {
     [Test]
     public void Test_multiplication() {
       Dollar five = new Dollar(5);
-      Dollar product = five.Times(2);
       
-      Assert.AreEqual(10, product.Amount);
-      product = five.Times(3);
-      Assert.AreEqual(15, product.Amount);
+      Assert.AreEqual(new Dollar(10), five.Times(2));
+      Assert.AreEqual(new Dollar(15), five.Times(3));
     }
 
     [Test]
