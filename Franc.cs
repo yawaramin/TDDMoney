@@ -4,7 +4,7 @@
       m_amount = amount;
     }
 
-    public Franc Times(int multiplier) {
+    public override Money Times(int multiplier) {
       return new Franc(m_amount * multiplier);
     }
   }

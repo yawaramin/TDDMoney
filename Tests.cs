@@ -5,26 +5,26 @@ namespace TDDMoney {
   class With_currencies {
     [Test]
     public void Test_multiplication() {
-      Dollar dollarFive = new Dollar(5);
+      Money dollarFive = Money.MakeDollar(5);
       
-      Assert.AreEqual(new Dollar(10), dollarFive.Times(2));
-      Assert.AreEqual(new Dollar(15), dollarFive.Times(3));
+      Assert.AreEqual(Money.MakeDollar(10), dollarFive.Times(2));
+      Assert.AreEqual(Money.MakeDollar(15), dollarFive.Times(3));
 
       Franc francFive = new Franc(5);
 
-      Assert.AreEqual(new Franc(10), francFive.Times(2));
-      Assert.AreEqual(new Franc(15), francFive.Times(3));
+      Assert.AreEqual(Money.MakeFranc(10), francFive.Times(2));
+      Assert.AreEqual(Money.MakeFranc(15), francFive.Times(3));
     }
 
     [Test]
     public void Test_equality() {
-      Assert.IsTrue(new Dollar(5).Equals(new Dollar(5)));
-      Assert.IsFalse(new Dollar(5).Equals(new Dollar(6)));
+      Assert.IsTrue(Money.MakeDollar(5).Equals(Money.MakeDollar(5)));
+      Assert.IsFalse(Money.MakeDollar(5).Equals(Money.MakeDollar(6)));
 
-      Assert.IsTrue(new Franc(5).Equals(new Franc(5)));
-      Assert.IsFalse(new Franc(5).Equals(new Franc(6)));
+      Assert.IsTrue(Money.MakeFranc(5).Equals(Money.MakeFranc(5)));
+      Assert.IsFalse(Money.MakeFranc(5).Equals(Money.MakeFranc(6)));
 
-      Assert.IsFalse(new Franc(5).Equals(new Dollar(5)));
+      Assert.IsFalse(Money.MakeFranc(5).Equals(Money.MakeDollar(5)));
     }
   }
 }
