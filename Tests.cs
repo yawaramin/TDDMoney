@@ -23,6 +23,8 @@ namespace TDDMoney {
 
       Assert.IsTrue(new Franc(5).Equals(new Franc(5)));
       Assert.IsFalse(new Franc(5).Equals(new Franc(6)));
+
+      Assert.IsFalse(new Franc(5).Equals(new Dollar(5)));
     }
   }
 }

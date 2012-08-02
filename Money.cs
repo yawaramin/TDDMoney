@@ -1,7 +1,10 @@
 ﻿namespace TDDMoney {
   class Money {
     public override bool Equals(object o) {
-      return m_amount == ((Money)o).m_amount;
+      Money money = (Money)o;
+
+      return m_amount == money.m_amount &&
+        GetType() == money.GetType();
     }
 
     protected int m_amount;
