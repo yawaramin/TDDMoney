@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TDDMoney {
+﻿namespace TDDMoney {
   class Dollar {
     public Dollar(int amount) {
       m_amount = amount;
@@ -18,8 +13,5 @@ namespace TDDMoney {
     }
 
     private int m_amount;
-
-    static void Main() {
-    }
   }
 }
