@@ -4,6 +4,12 @@ namespace TDDMoney {
   [TestFixture]
   class With_currencies {
     [Test]
+    public void Test_currency_name() {
+      Assert.AreEqual("USD", Money.MakeDollar(1).Currency);
+      Assert.AreEqual("CHF", Money.MakeFranc(1).Currency);
+    }
+
+    [Test]
     public void Test_multiplication() {
       Money dollarFive = Money.MakeDollar(5);
       

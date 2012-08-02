@@ -1,11 +1,9 @@
 ﻿namespace TDDMoney {
   class Franc : Money {
-    public Franc(int amount) {
-      m_amount = amount;
-    }
+    public Franc(int amount) : base(amount, "CHF") {}
 
     public override Money Times(int multiplier) {
-      return new Franc(m_amount * multiplier);
+      return Money.MakeFranc(m_amount * multiplier);
     }
   }
 }

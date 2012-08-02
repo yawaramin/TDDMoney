@@ -1,11 +1,9 @@
 ﻿namespace TDDMoney {
   class Dollar : Money {
-    public Dollar(int amount) {
-      m_amount = amount;
-    }
+    public Dollar(int amount) : base(amount, "USD") {}
 
     public override Money Times(int multiplier) {
-      return new Dollar(m_amount * multiplier);
+      return Money.MakeDollar(m_amount * multiplier);
     }
   }
 }
