@@ -32,5 +32,10 @@ namespace TDDMoney {
 
       Assert.IsFalse(Money.MakeFranc(5).Equals(Money.MakeDollar(5)));
     }
+
+    [Test]
+    public void Test_different_class_equality() {
+      Assert.IsTrue(new Money(10, "CHF").Equals(new Franc(10)));
+    }
   }
 }
