@@ -1,20 +1,25 @@
 ﻿namespace TDDMoney {
   interface IExpression {
     Money Reduce(Bank bank, string to);
+    IExpression Plus(IExpression addend);
   }
 
   class Sum : IExpression {
-    public Sum(Money augend, Money addend) {
+    public Sum(IExpression augend, IExpression addend) {
       Augend = augend;
       Addend = addend;
     }
 
     public Money Reduce(Bank bank, string to) {
-      int amount = Augend.Amount + Addend.Amount;
+      int amount = Augend.Reduce(bank, to).Amount + Addend.Reduce(bank, to).Amount;
       return new Money(amount, to);
     }
 
-    public Money Augend { get; set; }
-    public Money Addend { get; set; }
+    public IExpression Plus(IExpression addend) {
+      return null;
+    }
+
+    public IExpression Augend { get; set; }
+    public IExpression Addend { get; set; }
   }
 }

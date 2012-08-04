@@ -16,7 +16,7 @@
         m_currency == money.m_currency;
     }
 
-    public Money Times(int multiplier) {
+    public IExpression Times(int multiplier) {
       return new Money(m_amount * multiplier, m_currency);
     }
 
@@ -40,7 +40,7 @@
       return new Money(amount, "CHF");
     }
 
-    public IExpression Plus(Money addend) {
+    public IExpression Plus(IExpression addend) {
       return new Sum(this, addend);
     }
 
