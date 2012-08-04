@@ -20,6 +20,12 @@
       return new Money(m_amount * multiplier, m_currency);
     }
 
+    public int Amount {
+      get {
+        return m_amount;
+      }
+    }
+
     public string Currency {
       get {
         return m_currency;
@@ -35,7 +41,11 @@
     }
 
     public IExpression Plus(Money addend) {
-      return new Money(m_amount + addend.m_amount, m_currency);
+      return new Sum(this, addend);
+    }
+
+    public Money Reduce(string to) {
+      return this;
     }
 
     protected int m_amount;

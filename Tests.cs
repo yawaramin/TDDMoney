@@ -33,5 +33,29 @@ namespace TDDMoney {
 
       Assert.AreEqual(Money.Dollar(10), reduced);
     }
+
+    [Test]
+    public void Plus_should_return_Sum() {
+      Money five = Money.Dollar(5);
+      IExpression result = five.Plus(five);
+      Sum sum = (Sum)result;
+      Assert.AreEqual(five, sum.Augend);
+      Assert.AreEqual(five, sum.Addend);
+    }
+
+    [Test]
+    public void Test_reduce_Sum() {
+      IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+      Bank bank = new Bank();
+      Money result = bank.Reduce(sum, "USD");
+      Assert.AreEqual(Money.Dollar(7), result);
+    }
+
+    [Test]
+    public void Test_reduce_Money() {
+      Bank bank = new Bank();
+      Money result = bank.Reduce(Money.Dollar(1), "USD");
+      Assert.AreEqual(Money.Dollar(1), result);
+    }
   }
 }
