@@ -27,11 +27,11 @@
     }
 
     public static Money MakeDollar(int amount) {
-      return new Dollar(amount);
+      return new Money(amount, "USD");
     }
 
     public static Money MakeFranc(int amount) {
-      return new Franc(amount);
+      return new Money(amount, "CHF");
     }
 
     protected int m_amount;

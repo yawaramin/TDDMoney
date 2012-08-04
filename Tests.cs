@@ -15,27 +15,13 @@ namespace TDDMoney {
       
       Assert.AreEqual(Money.MakeDollar(10), dollarFive.Times(2));
       Assert.AreEqual(Money.MakeDollar(15), dollarFive.Times(3));
-
-      Franc francFive = new Franc(5);
-
-      Assert.AreEqual(Money.MakeFranc(10), francFive.Times(2));
-      Assert.AreEqual(Money.MakeFranc(15), francFive.Times(3));
     }
 
     [Test]
     public void Test_equality() {
       Assert.IsTrue(Money.MakeDollar(5).Equals(Money.MakeDollar(5)));
       Assert.IsFalse(Money.MakeDollar(5).Equals(Money.MakeDollar(6)));
-
-      Assert.IsTrue(Money.MakeFranc(5).Equals(Money.MakeFranc(5)));
-      Assert.IsFalse(Money.MakeFranc(5).Equals(Money.MakeFranc(6)));
-
       Assert.IsFalse(Money.MakeFranc(5).Equals(Money.MakeDollar(5)));
-    }
-
-    [Test]
-    public void Test_different_class_equality() {
-      Assert.IsTrue(new Money(10, "CHF").Equals(new Franc(10)));
     }
   }
 }
