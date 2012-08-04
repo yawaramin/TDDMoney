@@ -1,0 +1,4 @@
+﻿namespace TDDMoney {
+  interface IExpression {
+  }
+}

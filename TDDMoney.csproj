@@ -34,6 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bank.cs" />
+    <Compile Include="IExpression.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Tests.cs" />

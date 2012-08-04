@@ -1,5 +1,5 @@
 ﻿namespace TDDMoney {
-  class Money {
+  class Money : IExpression {
     public Money(int amount, string currency) {
       m_amount = amount;
       m_currency = currency;
@@ -26,12 +26,16 @@
       }
     }
 
-    public static Money MakeDollar(int amount) {
+    public static Money Dollar(int amount) {
       return new Money(amount, "USD");
     }
 
-    public static Money MakeFranc(int amount) {
+    public static Money Franc(int amount) {
       return new Money(amount, "CHF");
+    }
+
+    public IExpression Plus(Money addend) {
+      return new Money(m_amount + addend.m_amount, m_currency);
     }
 
     protected int m_amount;
