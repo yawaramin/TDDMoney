@@ -1,6 +1,6 @@
 ﻿namespace TDDMoney {
   interface IExpression {
-    Money Reduce(string to);
+    Money Reduce(Bank bank, string to);
   }
 
   class Sum : IExpression {
@@ -9,7 +9,7 @@
       Addend = addend;
     }
 
-    public Money Reduce(string to) {
+    public Money Reduce(Bank bank, string to) {
       int amount = Augend.Amount + Addend.Amount;
       return new Money(amount, to);
     }

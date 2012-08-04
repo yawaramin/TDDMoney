@@ -44,8 +44,9 @@
       return new Sum(this, addend);
     }
 
-    public Money Reduce(string to) {
-      return this;
+    public Money Reduce(Bank bank, string to) {
+      int rate = bank.Rate(m_currency, to);
+      return new Money(m_amount / rate, to);
     }
 
     protected int m_amount;

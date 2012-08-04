@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bank.cs" />
+    <Compile Include="CurrencyPair.cs" />
     <Compile Include="IExpression.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Program.cs" />
