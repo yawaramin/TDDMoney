@@ -2,7 +2,7 @@
 
 namespace TDDMoney {
   [TestFixture]
-  class With_currencies {
+  class With_Money {
     [Test]
     public void Currency_name() {
       Assert.AreEqual("USD", Money.Dollar(1).Currency);
@@ -44,22 +44,14 @@ namespace TDDMoney {
     }
 
     [Test]
-    public void Reduce_Sum() {
-      IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
-      Bank bank = new Bank();
-      Money result = bank.Reduce(sum, "USD");
-      Assert.AreEqual(Money.Dollar(7), result);
-    }
-
-    [Test]
-    public void Reduce_Money() {
+    public void Reduce() {
       Bank bank = new Bank();
       Money result = bank.Reduce(Money.Dollar(1), "USD");
       Assert.AreEqual(Money.Dollar(1), result);
     }
 
     [Test]
-    public void Reduce_money_different_currencies() {
+    public void Reduce_different_currencies() {
       Bank bank = new Bank();
       bank.AddRate("CHF", "USD", 2);
 
@@ -77,6 +69,41 @@ namespace TDDMoney {
 
       Assert.AreEqual(Money.Dollar(10), result);
     }
+  }
+
+  [TestFixture]
+  class With_Sum {
+    [SetUp]
+    public void Setup() {
+      m_bank.AddRate("CHF", "USD", 2);
+    }
+
+    [Test]
+    public void Reduce() {
+      IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+      Money result = m_bank.Reduce(sum, "USD");
+      Assert.AreEqual(Money.Dollar(7), result);
+    }
+
+    [Test]
+    public void Plus_Money() {
+      IExpression sum = new Sum(m_fiveBucks, m_tenFrancs).Plus(m_fiveBucks);
+      Money result = m_bank.Reduce(sum, "USD");
+
+      Assert.AreEqual(Money.Dollar(15), result);
+    }
+
+    [Test]
+    public void Times() {
+      IExpression sum = new Sum(m_fiveBucks, m_tenFrancs).Times(2);
+      Money result = m_bank.Reduce(sum, "USD");
+
+      Assert.AreEqual(Money.Dollar(20), result);
+    }
+
+    private Bank m_bank = new Bank();
+    private IExpression m_fiveBucks = Money.Dollar(5);
+    private IExpression m_tenFrancs = Money.Franc(10);
   }
 
   [TestFixture]
